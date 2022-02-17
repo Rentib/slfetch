@@ -52,13 +52,11 @@ distro(void)
     return NULL;
 
   while (getline(&line, &len, fp) != -1)
-    if (sscanf(line, "NAME=" "\"%[^\n]s\"", buf) > 0)
+    if (sscanf(line, "NAME=" "\"%[^\n\"]s", buf) > 0)
       break;
 
   free(line);
   fclose(fp);
-  /* last character of buf is gonna be " so we wanna erase it */
-  buf[strlen(buf) - 1] = '\0';
 
   return buf;
 }
