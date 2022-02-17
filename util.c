@@ -6,6 +6,7 @@
 
 #include "util.h"
 
+/* stolen from https://tools.suckless.org/slstatus/ */
 const char *
 bprintf(const char *fmt, ...)
 {
@@ -42,6 +43,7 @@ pstring(const char *s)
   return s;
 }
 
+/* stolen from https://tools.suckless.org/slstatus/ */
 int
 pscanf(const char *path, const char *fmt, ...)
 {
@@ -57,12 +59,4 @@ pscanf(const char *path, const char *fmt, ...)
   fclose(fp);
 
   return (n == EOF ? -1 : n);
-}
-
-void 
-remove_newline(char *s)
-{
-  while (*s != '\0' && *s != '\n')
-    s++;
-  *s = '\0';
 }
