@@ -32,7 +32,7 @@ or other files.
 
 * packages - change *packages* function in *slfetch.c*, maybe I will add it to *config.h*
 * colors - colors in slfetch are done using [printf](http://andrewnoske.com/wiki/Bash_-_adding_color),
-  you have them listed in *config.h*
+  you have them listed in *colors.h*
 
 Download
 --------
