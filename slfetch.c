@@ -25,6 +25,23 @@ char buf[1024];
 #include "config.h"
 
 const char *
+cpu_info(void)
+{
+  FILE *fp;
+  char *line = NULL;
+  size_t len;
+  if (!(fp = fopen("/proc/cpuinfo", "r")))
+    return NULL;
+  
+  while (getline(&line, &len, fp) != -1)
+    if (sscanf(line, "model name : " "%[^\n]s", buf) > 0)
+      break;
+  free(line);
+  fclose(fp);
+  return buf;
+}
+
+const char *
 distro(void)
 {
   FILE *fp;

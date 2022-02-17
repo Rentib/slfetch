@@ -38,5 +38,8 @@ static const struct arg args[][MAX_ITEMS] = {
     { ram_total, " / %s", "MiB" },
     { ram_perc, " (%s%%)", NULL },
   },
+  {
+    { cpu_info, "CPU: " RESET "%s", NULL },
+  },
 };
 

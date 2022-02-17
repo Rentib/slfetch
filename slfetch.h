@@ -1,5 +1,7 @@
 /* See LICENSE file for copyright and license details. */
+const char *cpu_info(void);
 const char *distro(void);
+const char *gpu_info(void);
 const char *hostname(void);
 const char *kernel(void);
 const char *model_name(void);
@@ -12,5 +14,3 @@ const char *resolution(void);
 const char *shell(void);
 const char *uptime(void);
 const char *username(void);
-
-void print(const int linenum);
