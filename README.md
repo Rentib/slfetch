@@ -38,5 +38,5 @@ Download
 --------
 You can [browse](https://github.com/Rentib/slfetch) the source code repository on GitHub or get copy using git with the following command:
 
-  $ git clone https://github.com/Rentib/slfetch
+    $ git clone https://github.com/Rentib/slfetch
 
