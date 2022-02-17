@@ -34,12 +34,15 @@ static const struct arg args[][MAX_ITEMS] = {
     { shell, "Shell: " RESET "%s", NULL },
   },
   {
-    { ram_used, "Memory: " RESET "%s", "MiB" },
-    { ram_total, " / %s", "MiB" },
-    { ram_perc, " (%s%%)", NULL },
+    { terminal, "Terminal: " RESET "%s", NULL },
   },
   {
     { cpu_info, "CPU: " RESET "%s", NULL },
+  },
+  {
+    { ram_used, "Memory: " RESET "%s", "MiB" },
+    { ram_total, " / %s", "MiB" },
+    { ram_perc, " (%s%%)", NULL },
   },
 };
 

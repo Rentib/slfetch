@@ -179,6 +179,12 @@ shell(void)
 }
 
 const char *
+terminal(void)
+{
+  return getenv("TERM");
+}
+
+const char *
 uptime(void)
 {
   uintmax_t h, m;

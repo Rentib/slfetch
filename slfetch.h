@@ -12,5 +12,6 @@ const char *ram_total(const char *unit);
 const char *ram_used(const char *unit);
 const char *resolution(void);
 const char *shell(void);
+const char *terminal(void);
 const char *uptime(void);
 const char *username(void);
