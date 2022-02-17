@@ -1,3 +1,4 @@
+/* See LICENSE file for copyright and license details. */
 #include "colors.h"
 #include "logos/neofetch-arch.h"
 

@@ -1,3 +1,4 @@
+# See LICENSE file for copyright and license details.
 # slfetch - simple linux fetch / suckless fetch
 .POSIX:
 

@@ -1,3 +1,4 @@
+/* See LICENSE file for copyright and license details. */
 /* This was stolen from neofetch */
 const char *LOGO[] = {
   BCOL14 "                  -`                    ",

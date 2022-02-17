@@ -1,3 +1,4 @@
+/* See LICENSE file for copyright and license details. */
 #define RESET "\x1B[0m"
 /* normal colors */
 #define COL00 "\x1B[30m" /* black */

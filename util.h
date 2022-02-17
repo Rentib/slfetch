@@ -1,3 +1,4 @@
+/* See LICENSE file for copyright and license details. */
 #include <stdint.h>
 
 extern char buf[1024];

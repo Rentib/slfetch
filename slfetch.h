@@ -1,3 +1,4 @@
+/* See LICENSE file for copyright and license details. */
 const char *distro(void);
 const char *hostname(void);
 const char *kernel(void);

@@ -1,3 +1,4 @@
+/* See LICENSE file for copyright and license details. */
 #define _POSIX_C_SOURCE 200809L
 #include <pwd.h>
 #include <stdint.h>
