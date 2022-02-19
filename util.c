@@ -21,15 +21,15 @@ bprintf(const char *fmt, ...)
 }
 
 const char *
-human_readable(uintmax_t num, const char *unit)
+human_readable(uintmax_t num, const char *unit, const int base)
 {
   /*         unit        0    1    2    3    4    5  */
   const char pref[] = { 'B', 'K', 'M', 'G', 'T', 'P' };
   size_t i, preflen, precision;
-  double scaled = num;
+  double scaled;
 
-  for (i = 0, preflen = LEN(pref); i < preflen && unit[0] != pref[i]; ++i)
-    scaled /= 1024;
+  for (i = 0, preflen = LEN(pref), scaled = num; i < preflen && unit[0] != pref[i]; ++i)
+    scaled /= base;
   if (i == preflen)
     return "Unsupported unit";
   precision = (i < 2 ? 0 : i - 2);

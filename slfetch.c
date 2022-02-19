@@ -25,19 +25,54 @@ char buf[1024];
 #include "config.h"
 
 const char *
-cpu_info(void)
+cpu_cores(void)
 {
   FILE *fp;
-  char *line = NULL;
-  size_t len;
+  size_t k, cores;
+  char *line;
+
   if (!(fp = fopen("/proc/cpuinfo", "r")))
     return NULL;
-  
-  while (getline(&line, &len, fp) != -1)
-    if (sscanf(line, "model name : " "%[^\n]s", buf) > 0)
+  line = NULL;
+  cores = 0;
+  while (getline(&line, &k, fp) != -1)
+    cores += (sscanf(line, "processor %[^\n]", buf) > 0);
+  return bprintf("%d", cores);
+}
+
+const char *
+cpu_freq(const char *unit)
+{
+  uintmax_t freq;
+  /* in kHz */
+  if (pscanf("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq",
+             "%ju", &freq) != 1)
+    return NULL;
+  return human_readable(freq * 1000, unit, 1000);
+}
+
+const char *
+cpu_name(void)
+{
+  FILE *fp;
+  size_t k;
+  int i;
+  char *line;
+
+  if (!(fp = fopen("/proc/cpuinfo", "r")))
+    return NULL;
+  line = NULL;
+  while (getline(&line, &k, fp) != -1)
+    if (sscanf(line, "model name : %[^\n@]", buf) > 0)
       break;
   free(line);
   fclose(fp);
+  
+  /* remove whitespaces at the end of buf */
+  for (i = 0; buf[i] != '\0'; ++i);
+  while (i > 0 && buf[--i] == ' ')
+    buf[i] = '\0';
+
   return buf;
 }
 
@@ -136,8 +171,8 @@ ram_total(const char *unit)
              "MemTotal: %ju kB\n",
              &total) != 1)
     return NULL;
-  return human_readable(total << 10, unit);
-  /* return human_readable(total * 1024, unit); */
+  return human_readable(total << 10, unit, 1024);
+  /* return human_readable(total * 1024, unit, 1024); */
 }
 
 const char *
@@ -150,7 +185,7 @@ ram_used(const char *unit)
              "MemAvailable: %ju kB\n",
              &total, &available, &available) != 3)
     return NULL;
-  return human_readable((total - available) << 10, unit);
+  return human_readable((total - available) << 10, unit, 1024);
   /* return human_readable((total - available) * 1024, unit); */
 }
 

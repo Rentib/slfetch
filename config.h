@@ -37,7 +37,9 @@ static const struct arg args[][MAX_ITEMS] = {
     { terminal, "Terminal: " RESET "%s", NULL },
   },
   {
-    { cpu_info, "CPU: " RESET "%s", NULL },
+    { cpu_name, "CPU: " RESET "%s", NULL },
+    { cpu_cores, " (%s)", NULL },
+    { cpu_freq, " @ %s", "GHz" },
   },
   {
     { ram_used, "Memory: " RESET "%s", "MiB" },

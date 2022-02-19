@@ -14,6 +14,6 @@ extern char buf[1024];
 #endif
 
 const char *bprintf(const char *fmt, ...);
-const char *human_readable(uintmax_t num, const char *unit);
+const char *human_readable(uintmax_t num, const char *unit, const int base);
 const char *pstring(const char *s);
 int pscanf(const char *path, const char *fmt, ...);
