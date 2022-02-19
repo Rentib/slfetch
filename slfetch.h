@@ -2,6 +2,7 @@
 const char *cpu_cores(void);
 const char *cpu_freq(const char *unit);
 const char *cpu_name(void);
+const char *cpu_perc(void);
 const char *distro(void);
 const char *gpu_info(void);
 const char *hostname(void);
