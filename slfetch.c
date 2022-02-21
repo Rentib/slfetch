@@ -161,16 +161,18 @@ model_version(void)
 }
 
 const char *
-packages(void)
+packages(const char *type)
 {
-  /* this only works for pacman for now */
-  /* to make it work for other package managers replace string in popen */
   FILE *fp;
   int num;
 
-  if (!(fp = popen("pacman -Q | wc -l", "r")))
-    return NULL;
-  fscanf(fp, "%d", &num);
+  if (!strcmp(type, "pacman")) {
+    if (!(fp = popen("pacman -Q | wc -l", "r")))
+      return NULL;
+    fscanf(fp, "%d", &num);
+  } else {
+    return "Unsupported package manager";
+  }
   return bprintf("%d", num);
 }
 

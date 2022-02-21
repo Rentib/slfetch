@@ -28,7 +28,7 @@ static const struct arg args[][MAX_ITEMS] = {
     { uptime, "Uptime: " RESET "%s", NULL },
   },
   {
-    { packages, "Packages: " RESET "%s (pacman)", NULL },
+    { packages, "Packages: " RESET "%s (pacman)", "pacman" },
   },
   {
     { shell, "Shell: " RESET "%s", NULL },
