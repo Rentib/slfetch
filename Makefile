@@ -1,14 +1,18 @@
 # See LICENSE file for copyright and license details.
 # slfetch - simple linux fetch / suckless fetch
+
 .POSIX:
 
-include config.mk
+VERSION = 0
+PREFIX  = /usr/local
+CFLAGS  = -std=c99 -pedantic -Wall -Wextra -Os
+CC      = cc
 
 REQ = util
 all: slfetch
 
 $(COM:=.o): config.mk $(REQ:=.h)
-slfetch.o: slfetch.c slfetch.h config.h config.mk $(REQ:=.h)
+slfetch.o: slfetch.c slfetch.h config.h $(REQ:=.h)
 
 .c.o:
 	$(CC) -o $@ -c $(CFLAGS) $<
